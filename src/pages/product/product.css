@@ -1,0 +1,32 @@
+.product-image-container {}
+
+.product-image {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.product-details-name {
+    padding-right: 10px;
+}
+
+.product-details-description {
+    padding-right: 10px;
+}
+
+.product-details-price {
+    padding-right: 10px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.product-modal-box {
+    position: 'absolute' as 'absolute';
+    top: '50%';
+    left: '50%';
+    transform: 'translate(-50%, -50%)';
+    width: 400;
+    background-color: 'background.paper';
+    border: '2px solid #000';
+    box-shadow: 24;
+    p: 4;
+}
