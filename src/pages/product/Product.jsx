@@ -91,7 +91,7 @@ export default function Product() {
                         }
                         sx={{ mb: 2 }}
                         >
-                        Close me!
+                        Your order has been sent
                         </Alert>
                     </Collapse>
                 </Box>
