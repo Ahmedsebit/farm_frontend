@@ -25,13 +25,16 @@ const style = {
 
 export default function Product() {
 
+    
     const {id} = useParams()
     const [product, setProduct] = useState([])
     const [open, setOpen] = useState(false);
+    const [image_url, setImageUrl] = useState("");
     const [open_notification, setOpenNotification] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const { handleSubmit, control } = useForm();
+    
     const saveOrder = (data) => {
         data.product_id = parseInt(id)
         data.quantity = parseFloat(data.quantity)
@@ -59,13 +62,15 @@ export default function Product() {
           })
           .then(data => {
             setProduct(data)
+            const image_from_url = `/images/${data.image_url.split("jpg")[0]}jpg`
+            setImageUrl(image_from_url)
           })
       }
 
       useEffect(() => {
         fetchData()
       }, [])
-    
+
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={12}>
@@ -86,14 +91,14 @@ export default function Product() {
                         }
                         sx={{ mb: 2 }}
                         >
-                        Close me!
+                        Your order has been sent
                         </Alert>
                     </Collapse>
                 </Box>
             </Grid>
             <Grid item xs={6} md={6}>
                 <div className="product-image-container">
-                    <img className="product-image" src='https://images.unsplash.com/photo-1551963831-b3b1ca40c98e' alt="" />
+                    <img className="product-image" src={image_url} alt="" />
                 </div>
             </Grid>
             <Grid item xs={6} md={6}>
