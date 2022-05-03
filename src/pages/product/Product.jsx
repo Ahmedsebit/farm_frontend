@@ -25,6 +25,7 @@ const style = {
 
 export default function Product() {
 
+    
     const {id} = useParams()
     const [product, setProduct] = useState([])
     const [open, setOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function Product() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const { handleSubmit, control } = useForm();
+    
     const saveOrder = (data) => {
         data.product_id = parseInt(id)
         data.quantity = parseFloat(data.quantity)
@@ -65,7 +67,7 @@ export default function Product() {
       useEffect(() => {
         fetchData()
       }, [])
-    
+
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={12}>
@@ -93,7 +95,7 @@ export default function Product() {
             </Grid>
             <Grid item xs={6} md={6}>
                 <div className="product-image-container">
-                    <img className="product-image" src='https://images.unsplash.com/photo-1551963831-b3b1ca40c98e' alt="" />
+                    <img className="product-image" src={'/images/'+product.image_url.split("jpg")[0]+'jpg'} alt="" />
                 </div>
             </Grid>
             <Grid item xs={6} md={6}>
