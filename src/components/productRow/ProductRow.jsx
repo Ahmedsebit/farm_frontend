@@ -5,7 +5,8 @@ import "./ProductRow.css"
 
 export default function ProductRow({ id, image, name, description, price }) {
     
-  var image_name = `s3://lori-tms/client-generated-files-dev/${image}`
+  const image_from_url = image.split("jpg")[0];
+  const image_name = `/images/${image_from_url}jpg`;
   return (
     <div className="row product">
         <div className="col-md-2">
