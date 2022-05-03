@@ -29,6 +29,7 @@ export default function Product() {
     const {id} = useParams()
     const [product, setProduct] = useState([])
     const [open, setOpen] = useState(false);
+    const [image_url, setImageUrl] = useState("");
     const [open_notification, setOpenNotification] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -61,6 +62,8 @@ export default function Product() {
           })
           .then(data => {
             setProduct(data)
+            const image_from_url = `/images/${data.image_url.split("jpg")[0]}jpg`
+            setImageUrl(image_from_url)
           })
       }
 
@@ -95,7 +98,7 @@ export default function Product() {
             </Grid>
             <Grid item xs={6} md={6}>
                 <div className="product-image-container">
-                    <img className="product-image" src={'/images/'+product.image_url.split("jpg")[0]+'jpg'} alt="" />
+                    <img className="product-image" src={image_url} alt="" />
                 </div>
             </Grid>
             <Grid item xs={6} md={6}>
